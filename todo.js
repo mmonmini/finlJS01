@@ -11,7 +11,7 @@ function saveToDos() {
 }
 
 function completeToDo(event) {
-  const li = event.target.parentElement;
+  const li = event.target.closest("li");
   li.classList.toggle("done");
 }
 
@@ -53,7 +53,7 @@ buttonBox.appendChild(deleteButton);
 li.appendChild(span);
 li.appendChild(buttonBox);
 
-  toDoList.appendChild(li);
+toDoList.appendChild(li);
 }
 
 function handleToDoSubmit(event) {
