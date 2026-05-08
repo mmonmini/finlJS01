@@ -4,7 +4,7 @@ const chosenImage = images[Math.floor(Math.random() * images.length)];
 
 const bgImage = document.createElement("img");
 
-bgImage.src = "img/5.gif";
+bgImage.src = `img/${chosenImage}`;
 
 bgImage.style.position = "fixed";
 bgImage.style.top = "0";
