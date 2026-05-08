@@ -15,6 +15,16 @@ function completeToDo(event) {
   li.classList.toggle("done");
 }
 
+function deleteToDo(event) {
+  const li = event.target.parentElement;
+
+  li.remove();
+
+  toDos = toDos.filter((toDo) => toDo.id !== Number(li.id));
+
+  saveToDos();
+}
+
 function paintToDo(newTodo) {
   if (!newTodo || !newTodo.text) return;
 
@@ -24,12 +34,25 @@ function paintToDo(newTodo) {
   const span = document.createElement("span");
   span.innerText = newTodo.text;
 
-  const button = document.createElement("button");
-  button.innerText = "✓";
-  button.addEventListener("click", completeToDo);
+const completeButton = document.createElement("button");
+completeButton.innerText = "✓";
+completeButton.classList.add("complete-btn");
+completeButton.addEventListener("click", completeToDo);
 
-  li.appendChild(span);
-  li.appendChild(button);
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "지우기";
+  deleteButton.classList.add("delete-btn");
+  deleteButton.addEventListener("click", deleteToDo);
+
+const buttonBox = document.createElement("div");
+buttonBox.classList.add("todo-buttons");
+
+buttonBox.appendChild(completeButton);
+buttonBox.appendChild(deleteButton);
+
+li.appendChild(span);
+li.appendChild(buttonBox);
+
   toDoList.appendChild(li);
 }
 
